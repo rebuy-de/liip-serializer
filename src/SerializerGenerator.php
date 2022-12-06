@@ -237,6 +237,11 @@ final class SerializerGenerator
                 $innerCode = $this->generateCodeForClass($subType->getClassMetadata(), $apiVersion, $serializerGroups, $arrayPath.'['.$index.']', $modelPath.'['.$index.']', $stack);
                 break;
 
+            case $subType instanceof PropertyTypeUnknown;
+                $modelPropertyPath = $type->isCollection() ? $modelPath . '->toArray()' : $modelPath;
+
+                return $this->templating->renderAssign($arrayPath, $modelPropertyPath);
+
             default:
                 throw new \Exception('Unexpected array subtype '.\get_class($subType));
         }

@@ -48,6 +48,13 @@ class ListModel
      */
     public $collectionNested;
 
+    /**
+     * @var array
+     *
+     * @Serializer\Type("array")
+     */
+    public $unknownSubtype;
+
     public function getOptionalList()
     {
         return $this->optionalList ?: null;

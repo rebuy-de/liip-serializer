@@ -105,6 +105,9 @@ class SerializerGeneratorTest extends SerializerTestCase
         $list->collection = new ArrayCollection(['a', 'b']);
         $list->collectionNested = new ArrayCollection(['a' => new Nested('nested1'), 'b' => new Nested('nested2')]);
 
+        $unknownSubtype = ['unknown' => 'type', 'nested' => ['unknown' => 'subtype']];
+        $list->unknownSubtype = $unknownSubtype;
+
         $expected = [
             'array' => ['a', 'b'],
             'list_nested' => [
@@ -120,6 +123,7 @@ class SerializerGeneratorTest extends SerializerTestCase
                 'a' => ['nested_string' => 'nested1'],
                 'b' => ['nested_string' => 'nested2'],
             ],
+            'unknown_subtype' => $unknownSubtype,
         ];
 
         $data = $functionName($list);
