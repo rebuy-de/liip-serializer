@@ -1,5 +1,9 @@
 # Changelog
 
+# 2.1.0 (unreleased)
+
+* Add support for (de-)serializing doctrine collections
+
 # 2.0.6
 
 * Allow installation with liip/metadata-parser 0.5
